@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background-image: url('./12182815_932993590121947_608871986780195488_o.webp');
+    background-position: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(2px);
+    filter: brightness(0.7);
+
+}
+
+h1 {
+    position: fixed;
+    padding: none;
+    margin: none;
+    width: 100%;
+    top: 5%;
+    font-size: 50px;
+
+    text-align: center;
+    color: rgba(49, 47, 47, 0.767);
+}
+
+form {
+    width: 50%;
+    height: 65vh;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: rgba(21, 38, 49, 0.564);
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.621);
+    color: rgba(255, 255, 255, 0.767);
+}
+
+input.input-file-excel,
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background: rgba(24, 30, 46, 0.386);
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: rgba(24, 30, 46, 0.767);
+}
+
+.input_threshold {
+    width: 80%;
+    padding: 5px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.input_threshold::placeholder {
+    text-align: center;
+}
+
+.absolute_grading_options {
+    width: 100%;
+}
+
+.relative_grading_options {
+    margin-top: 50px;
+}
+.custom_distribution{
+    width: 70%;
+    padding: none;
+    display: flex;
+}
+.custom_label{
+    display: inline;
+}
+.custom_threshold{
+    position: relative;
+    width: 70%;
+    padding: 1px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 3px;
+    align-self: self-end;
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Results</title>
+        <link rel="stylesheet"
+            href="{{ url_for('static', filename='style2.css') }}">
+
+    </head>
+    <body>
+        <h1 class="center">Grading System Results</h1>
+
+        <!-- Display the table of results -->
+        <h2>Student Grades (Original and Adjusted)</h2>
+        <div class="img-align">
+            {{ table|safe }} <!-- Render the table -->
+        </div>
+
+        <!-- Display the visualizations -->
+        <h2>Grade Distributions</h2>
+        <h3>Original Distribution</h3>
+        <div class="img-align">
+            <img src="../static/original_distribution.png"
+                alt="Original Distribution">
+        </div>
+
+        <h3>Adjusted Distribution</h3>
+        <div class="img-align">
+            <img src="../static/adjusted_distribution.png"
+                alt="Adjusted Distribution">
+        </div>
+
+        <!-- Frequency Table -->
+        <h2>Frequency Table of Grades</h2>
+        <center><div class="img-align table2">
+                {{ grade_freq_table|safe }}
+            </div></center>
+
+        <!-- Scatter Plot -->
+        <h2>Score vs Student Scatter Plot</h2>
+        <div class="img-align">
+            <img src="../static/scatter_plot.png"
+                alt="Score vs Student Scatter Plot">
+        </div>
+
+        <!-- Line Graph -->
+        <h2>Scores Line Graph</h2>
+        <div class="img-align width">
+            <img src="../static/line_graph.png"
+                alt="Scores Line Graph">
+        </div>
+
+        <!-- Box Plot -->
+        <h2>Box Plot of Scores by Grade</h2>
+        <div class="img-align">
+            <img src="../static//box_plot.png"
+                alt="Box Plot of Scores by Grade">
+        </div>
+
+        <!-- Summary Statistics -->
+
+        <h2>Summary Statistics</h2>
+        <center>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Statistic</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in summary_stats.items() %}
+                    <tr>
+                        <td><strong>{{ key }}</strong></td>
+                        <td>{{ value }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </center>
+
+    </body>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</html>

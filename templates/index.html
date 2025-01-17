@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Grade System</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <script>
+            function toggleGradingOptions() {
+                const gradingChoice = document.querySelector('select[name="grading_choice"]').value;
+                const absoluteOptions = document.getElementById('absolute_grading_options');
+                const relativeOptions = document.getElementById('relative_grading_options');
+                const customDistribution = document.getElementById('custom_distribution');
+
+                if (gradingChoice === 'absolute') {
+                    absoluteOptions.style.display = 'block';
+                    relativeOptions.style.display = 'none';
+                    customDistribution.style.display = 'none';
+                } else {
+                    absoluteOptions.style.display = 'none';
+                    relativeOptions.style.display = 'block';
+                    const desiredDistribution = document.querySelector('select[name="desired_distribution"]').value;
+                    if (desiredDistribution === 'custom') {
+                        customDistribution.style.display = 'block';
+                    } else {
+                        customDistribution.style.display = 'none';
+                    }
+                }
+            }
+
+            // Trigger the function when the grading choice changes
+            document.addEventListener('DOMContentLoaded', () => {
+                toggleGradingOptions();
+                document.querySelector('select[name="grading_choice"]').addEventListener('change', toggleGradingOptions);
+                document.querySelector('select[name="desired_distribution"]').addEventListener('change', toggleGradingOptions);
+            });
+        </script>
+    </head>
+    <body>
+        <h1 class="center">STUDENTS GRADE CALCULATOR</h1>
+        <form action="/process" method="post" id="form" enctype="multipart/form-data">
+            <center><label class="label-file-excel" for="file">Upload CSV or Excel File</label></center>
+            <input class="input-file-excel" type="file" name="file" required><br>
+
+            <center><label for="grading_choice">Choose Grading Option</label></center>
+            <select name="grading_choice" required>
+                <option value="absolute">Absolute Grading</option>
+                <option value="relative">Relative Grading</option>
+            </select><br>
+
+            <!-- Absolute Grading Options (hidden by default) -->
+            <div id="absolute_grading_options" style="display:none;">
+                <label class="start" for="A_threshold">A Threshold:</label>
+                <input class="input_threshold" type="number" name="A_threshold" placeholder="90" value="90"><br>
+
+                <label class="start" for="B_threshold">B Threshold:</label>
+                <input class="input_threshold" type="number" name="B_threshold" value="80"><br>
+
+                <label class="start" for="C_threshold">C Threshold:</label>
+                <input class="input_threshold" type="number" name="C_threshold" value="70"><br>
+
+                <label class="start" for="D_threshold">D Threshold:</label>
+                <input class="input_threshold" type="number" name="D_threshold" value="60"><br>
+            </div>
+
+            <!-- Relative Grading Options -->
+            <div id="relative_grading_options">
+                <center><label for="desired_distribution">Choose Desired Distribution (for Relative Grading)</label></center>
+                <select name="desired_distribution">
+                    <option value="z-score">Z-score Distribution</option>
+                    <option value="percentile">Percentile Distribution</option>
+                    <option value="custom">Custom Distribution</option>
+                </select><br>
+            </div>
+
+            <!-- Custom Distribution (for Relative Grading) -->
+            <div id="custom_distribution" style="display:none;">
+                <div class="between">
+                    <label class="custom_label" for="A_percentage">[A] PERCENTAGE</label>
+                    <input class="custom_threshold" type="number" name="custom_A_threshold" placeholder="30" value="30"><br>
+                </div>
+                <div class="between">
+                    <label class="custom_label" for="B_percentage">[B] PERCENTAGE </label>
+                    <input class="custom_threshold" type="number" name="custom_Bthreshold" placeholder="30" value="30"><br>
+                </div>
+
+                <label class="custom_label" for="C_percentage">[C]PERCENTAGE </label>
+                <input class="custom_threshold" type="number" name="custom_C_threshold" placeholder="20" value="20"><br>
+
+                <label class="custom_label" for="D_percentage">[D] PERCENTAGE </label>
+                <input class="custom_threshold" type="number" name="custom_D_threshold" placeholder="15" value="15"><br>
+
+                <label class="custom_label" for="F_percentage">[F] PERCENTAGE </label>
+                <input class="custom_threshold" type="number" name="custom_F_threshold" placeholder="5" value="5"><br>
+            </div>
+
+            <center><button type="submit">Submit</button></center>
+        </form>
+    </body>
+</html>
