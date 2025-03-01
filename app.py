@@ -3,7 +3,7 @@ matplotlib.use('Agg')  # Set the backend to Agg (non-interactive)
 import matplotlib.pyplot as plt # Imports the pyplot module from matplotlib, used for creating plots and graphs.
 import seaborn as sns  #Imports the seaborn library, a high-level data visualization library based on matplotlib.
 from flask import Flask, render_template, request 
-#Imports flask module, used to create a Flask application.
+#Imports flask module, used to create a Flask application
 #render_template: Renders HTML templates.
 #request: Handles incoming HTTP requests.
 import pandas as pd# statistics and data manipulation library
